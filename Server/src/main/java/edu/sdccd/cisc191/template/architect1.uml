@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-784.0" y="67.0">edu.sdccd.cisc191.template.Water</node>
+    <node x="-900.0" y="-41.0">edu.sdccd.cisc191.template.Edible</node>
+    <node x="-781.0" y="18.0">edu.sdccd.cisc191.template.Drink</node>
+    <node x="-897.0" y="18.0">edu.sdccd.cisc191.template.Food</node>
+    <node x="-896.0" y="67.0">edu.sdccd.cisc191.template.Cake</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="edu.sdccd.cisc191.template.Drink" target="edu.sdccd.cisc191.template.Edible" relationship="REALIZATION">
+      <point x="0.0" y="-14.5" />
+      <point x="-739.0" y="8.0" />
+      <point x="-855.0" y="8.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.sdccd.cisc191.template.Water" target="edu.sdccd.cisc191.template.Drink" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.sdccd.cisc191.template.Food" target="edu.sdccd.cisc191.template.Edible" relationship="REALIZATION">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="edu.sdccd.cisc191.template.Cake" target="edu.sdccd.cisc191.template.Food" relationship="GENERALIZATION">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="1.5" showDependencies="false" x="-787.0" y="37.5" />
+  <SelectedNodes>
+    <node>edu.sdccd.cisc191.template.Edible</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
