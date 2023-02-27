@@ -58,8 +58,8 @@ public class Server extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-       Drink[] drinks = new Drink[5];
-       Food[] food = new Food[0];
+        Drink[] drinks = new Drink[3];
+        Food[][] food = new Food[2][2];
 
         float width = 1500;
         float height = 800;
@@ -73,18 +73,28 @@ public class Server extends Application {
 
         Button closeButton = new Button("X");
         Button waterButton = new Button("Water");
+        Button cakeButton = new Button("Cake");
 
         closeButton.setTranslateX((width / 2) - 20);
         closeButton.setTranslateY((-height / 2) + 20);
 
+        waterButton.setTranslateX(50);
+        waterButton.setTranslateY(50);
+
+        cakeButton.setTranslateX(200);
+        cakeButton.setTranslateY(200);
+
         EventHandler<ActionEvent> closeEvent = e -> stage.close();
         EventHandler<ActionEvent> addWaterEvent = e -> drinks[0] = new Water();
+        EventHandler<ActionEvent> addCakeEvent = e -> food[0][0] = new Cake();
 
         closeButton.setOnAction(closeEvent);
         waterButton.setOnAction(addWaterEvent);
+        cakeButton.setOnAction(addCakeEvent);
 
         stackPane.getChildren().add(closeButton);
         stackPane.getChildren().add(waterButton);
+        stackPane.getChildren().add(cakeButton);
 
         stage.setScene(scene);
         stage.setTitle("Menu");
