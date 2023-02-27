@@ -5,17 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -61,29 +58,33 @@ public class Server extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Canvas menuCanvas = new Canvas(100,100);
+       Drink[] drinks = new Drink[5];
+       Food[] food = new Food[0];
+
+        float width = 1500;
+        float height = 800;
+
+        Canvas menuCanvas = new Canvas(100, 100);
         BorderPane borderPane = new BorderPane();
         HBox header = new HBox();
         VBox gameBoard = new VBox();
         StackPane stackPane = new StackPane();
-        Button closeButton = new Button("X");
-        float width = 1500;
-        float height = 800;
         Scene scene = new Scene(stackPane, width, height);
 
-        closeButton.setTranslateX((width/2)-20);
-        closeButton.setTranslateY((-height/2)+20);
+        Button closeButton = new Button("X");
+        Button waterButton = new Button("Water");
 
-        EventHandler<ActionEvent> closeEvent = new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e)
-            {
-                stage.close();
-            }
-        };
+        closeButton.setTranslateX((width / 2) - 20);
+        closeButton.setTranslateY((-height / 2) + 20);
+
+        EventHandler<ActionEvent> closeEvent = e -> stage.close();
+        EventHandler<ActionEvent> addWaterEvent = e -> drinks[0] = new Water();
 
         closeButton.setOnAction(closeEvent);
+        waterButton.setOnAction(addWaterEvent);
 
         stackPane.getChildren().add(closeButton);
+        stackPane.getChildren().add(waterButton);
 
         stage.setScene(scene);
         stage.setTitle("Menu");
@@ -92,7 +93,7 @@ public class Server extends Application {
 
     public static void main(String[] args) {
 
-       launch();
+        launch();
 
 //        Server server = new Server();
 //        try {
