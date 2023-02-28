@@ -4,12 +4,8 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -58,22 +54,19 @@ public class Server extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Drink[] drinks = new Drink[3];
-        Food[][] food = new Food[2][2];
+        Drink drinks = new Drink();
+        Food food = new Food();
 
         float width = 1500;
         float height = 800;
 
-        Canvas menuCanvas = new Canvas(100, 100);
-        BorderPane borderPane = new BorderPane();
-        HBox header = new HBox();
-        VBox gameBoard = new VBox();
         StackPane stackPane = new StackPane();
         Scene scene = new Scene(stackPane, width, height);
 
         Button closeButton = new Button("X");
         Button waterButton = new Button("Water");
         Button cakeButton = new Button("Cake");
+        Button FinishButton = new Button("Done");
 
         closeButton.setTranslateX((width / 2) - 20);
         closeButton.setTranslateY((-height / 2) + 20);
@@ -84,17 +77,31 @@ public class Server extends Application {
         cakeButton.setTranslateX(200);
         cakeButton.setTranslateY(200);
 
+        FinishButton.setTranslateX(-200);
+        FinishButton.setTranslateY(-200);
+
         EventHandler<ActionEvent> closeEvent = e -> stage.close();
-        EventHandler<ActionEvent> addWaterEvent = e -> drinks[0] = new Water();
-        EventHandler<ActionEvent> addCakeEvent = e -> food[0][0] = new Cake();
+        EventHandler<ActionEvent> finishEvent = e -> {
+            drinks.printArray();
+            food.printArray();
+            food.printPrice();
+            drinks.printPrice();
+            stage.close();
+        };
+        EventHandler<ActionEvent> addWaterEvent = e -> {
+            drinks.addWater();
+        };
+        EventHandler<ActionEvent> addCakeEvent = e -> food.addCake();
 
         closeButton.setOnAction(closeEvent);
         waterButton.setOnAction(addWaterEvent);
         cakeButton.setOnAction(addCakeEvent);
+        FinishButton.setOnAction(finishEvent);
 
         stackPane.getChildren().add(closeButton);
         stackPane.getChildren().add(waterButton);
         stackPane.getChildren().add(cakeButton);
+        stackPane.getChildren().add(FinishButton);
 
         stage.setScene(scene);
         stage.setTitle("Menu");
