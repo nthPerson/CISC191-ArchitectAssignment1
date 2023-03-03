@@ -64,21 +64,24 @@ public class Server extends Application {
         Scene scene = new Scene(stackPane, width, height);
 
         Button closeButton = new Button("X");
-        Button waterButton = new Button("Water");
-        Button cakeButton = new Button("Cake");
-        Button FinishButton = new Button("Done");
+        Button ArrayPrintAll = new Button("1DArray Print All");
+        Button ArrayPrintMax = new Button("1D Array Print Max");
+        Button ArrayPrintMin = new Button("1D Array Print Min");
+        Button MDArrayPrintAll = new Button("2DArray Print All");
+        Button MDArrayPrintMax = new Button("2D Array Print Max");
+        Button MDArrayPrintMin = new Button("2D Array Print Min");
 
         closeButton.setTranslateX((width / 2) - 20);
         closeButton.setTranslateY((-height / 2) + 20);
 
-        waterButton.setTranslateX(50);
-        waterButton.setTranslateY(50);
+        ArrayPrintAll.setTranslateX(50);
+        ArrayPrintAll.setTranslateY(50);
 
-        cakeButton.setTranslateX(200);
-        cakeButton.setTranslateY(200);
+        ArrayPrintMax.setTranslateX(200);
+        ArrayPrintMax.setTranslateY(200);
 
-        FinishButton.setTranslateX(-200);
-        FinishButton.setTranslateY(-200);
+        ArrayPrintMin.setTranslateX(-200);
+        ArrayPrintMin.setTranslateY(-200);
 
         EventHandler<ActionEvent> closeEvent = e -> stage.close();
         EventHandler<ActionEvent> finishEvent = e -> {
@@ -94,14 +97,14 @@ public class Server extends Application {
         EventHandler<ActionEvent> addCakeEvent = e -> food.addCake();
 
         closeButton.setOnAction(closeEvent);
-        waterButton.setOnAction(addWaterEvent);
-        cakeButton.setOnAction(addCakeEvent);
-        FinishButton.setOnAction(finishEvent);
+        ArrayPrintAll.setOnAction(addWaterEvent);
+        ArrayPrintMax.setOnAction(addCakeEvent);
+        ArrayPrintMin.setOnAction(finishEvent);
 
         stackPane.getChildren().add(closeButton);
-        stackPane.getChildren().add(waterButton);
-        stackPane.getChildren().add(cakeButton);
-        stackPane.getChildren().add(FinishButton);
+        stackPane.getChildren().add(ArrayPrintAll);
+        stackPane.getChildren().add(ArrayPrintMax);
+        stackPane.getChildren().add(ArrayPrintMin);
 
         stage.setScene(scene);
         stage.setTitle("Menu");
