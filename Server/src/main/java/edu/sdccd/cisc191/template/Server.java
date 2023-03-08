@@ -54,8 +54,11 @@ public class Server extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Drink drinks = new Drink();
-        Food food = new Food();
+        int[] array = new int[]{0, 1, 2, 3, 4};
+        int[][] mdArray = new int[][]{{0, 1, 2, 3, 4}, {5, 6, 7, 8, 9}, {10, 11, 12, 13, 14}};
+
+        IntArray intArray = new IntArray(array);
+        MDIntArray mdIntArray = new MDIntArray(mdArray);
 
         float width = 1500;
         float height = 800;
@@ -74,37 +77,47 @@ public class Server extends Application {
         closeButton.setTranslateX((width / 2) - 20);
         closeButton.setTranslateY((-height / 2) + 20);
 
-        ArrayPrintAll.setTranslateX(50);
-        ArrayPrintAll.setTranslateY(50);
+        ArrayPrintAll.setTranslateX(100);
+        ArrayPrintAll.setTranslateY(100);
 
-        ArrayPrintMax.setTranslateX(200);
-        ArrayPrintMax.setTranslateY(200);
+        ArrayPrintMax.setTranslateX(-100);
+        ArrayPrintMax.setTranslateY(-100);
 
-        ArrayPrintMin.setTranslateX(-200);
-        ArrayPrintMin.setTranslateY(-200);
+        ArrayPrintMin.setTranslateX(-100);
+        ArrayPrintMin.setTranslateY(100);
+
+        MDArrayPrintAll.setTranslateX(300);
+        MDArrayPrintAll.setTranslateY(300);
+
+        MDArrayPrintMax.setTranslateX(-300);
+        MDArrayPrintMax.setTranslateY(-300);
+
+        MDArrayPrintMin.setTranslateX(-300);
+        MDArrayPrintMin.setTranslateY(300);
 
         EventHandler<ActionEvent> closeEvent = e -> stage.close();
-        EventHandler<ActionEvent> finishEvent = e -> {
-            drinks.printArray();
-            food.printArray();
-            food.printPrice();
-            drinks.printPrice();
-            stage.close();
-        };
-        EventHandler<ActionEvent> addWaterEvent = e -> {
-            drinks.addWater();
-        };
-        EventHandler<ActionEvent> addCakeEvent = e -> food.addCake();
+        EventHandler<ActionEvent> ArrayPrintAllEvent = e -> intArray.printAll();
+        EventHandler<ActionEvent> ArrayPrintMaxEvent = e -> intArray.max();
+        EventHandler<ActionEvent> ArrayPrintMinEvent = e -> intArray.min();
+        EventHandler<ActionEvent> MDArrayPrintAllEvent = e -> mdIntArray.printAll();
+        EventHandler<ActionEvent> MDArrayPrintMaxEvent = e -> mdIntArray.getMaxValue();
+        EventHandler<ActionEvent> MDArrayPrintMinEvent = e -> mdIntArray.getMinValue();
 
         closeButton.setOnAction(closeEvent);
-        ArrayPrintAll.setOnAction(addWaterEvent);
-        ArrayPrintMax.setOnAction(addCakeEvent);
-        ArrayPrintMin.setOnAction(finishEvent);
+        ArrayPrintAll.setOnAction(ArrayPrintAllEvent);
+        ArrayPrintMax.setOnAction(ArrayPrintMaxEvent);
+        ArrayPrintMin.setOnAction(ArrayPrintMinEvent);
+        MDArrayPrintAll.setOnAction(MDArrayPrintAllEvent);
+        MDArrayPrintMax.setOnAction(MDArrayPrintMaxEvent);
+        MDArrayPrintMin.setOnAction(MDArrayPrintMinEvent);
 
         stackPane.getChildren().add(closeButton);
         stackPane.getChildren().add(ArrayPrintAll);
         stackPane.getChildren().add(ArrayPrintMax);
         stackPane.getChildren().add(ArrayPrintMin);
+        stackPane.getChildren().add(MDArrayPrintAll);
+        stackPane.getChildren().add(MDArrayPrintMax);
+        stackPane.getChildren().add(MDArrayPrintMin);
 
         stage.setScene(scene);
         stage.setTitle("Menu");
