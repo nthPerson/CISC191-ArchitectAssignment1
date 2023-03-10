@@ -1,5 +1,7 @@
 package edu.sdccd.cisc191.template;
 
+import java.util.Arrays;
+
 public class MDIntArray {
     //getAtIndex, setAtIndex, findIndexOf, printAll, deleteAtIndex, expand, shrink
 
@@ -10,24 +12,28 @@ public class MDIntArray {
     }
 
     int getAtIndex(int row, int col) {
+        System.out.println(MDArray[row][col]);
         return MDArray[row][col];
     }
 
     void setAtIndex(int row, int col, int newValue) {
         MDArray[row][col] = newValue;
+        System.out.println(Arrays.deepToString(MDArray));
     }
 
-    public int[] findIndex(int num) {
+    public String findIndex(int num) {
 
 
         for (int i = 0; i < MDArray.length; i++) {
             for (int j = 0; j < MDArray[i].length; j++) {
                 if (MDArray[i][j] == num) {
-                    return new int[]{i, j};
+                    System.out.println("" + i + "," + j);
+                    return "" + i + "," + j;
                 }
             }
         }
-        return new int[0];
+        System.out.println("num not found");
+        return "num not found";
     }
 
     void printAll() {
@@ -50,32 +56,33 @@ public class MDIntArray {
                 }
             }
         }
+        System.out.println(Arrays.deepToString(MDArray));
     }
 
     void expandArray(int factor) {
         int[][] output = new int[MDArray.length + factor][MDArray[0].length + factor];
-        for (int i = 0; i < output.length; i++) {
-            for (int j = 0; j < output[i].length; j++) {
-                int orgRow = i / ((MDArray.length - 1) + factor);
-                int orgCol = j / ((MDArray[0].length - 1) + factor);
-                output[i][j] = MDArray[orgRow][orgCol];
+        for (int i = 0; i < MDArray.length; i++) {
+            for (int j = 0; j < MDArray[i].length; j++) {
+
+                output[i][j] = MDArray[i][j];
             }
         }
 
         MDArray = output;
+        System.out.println(Arrays.deepToString(MDArray));
     }
 
     void shrink(int factor) {
         int[][] output = new int[MDArray.length - factor][MDArray[0].length - factor];
         for (int i = 0; i < output.length; i++) {
             for (int j = 0; j < output[i].length; j++) {
-                int orgRow = i / ((MDArray.length - 1) - factor);
-                int orgCol = j / ((MDArray[0].length - 1) - factor);
-                output[i][j] = MDArray[orgRow][orgCol];
+
+                output[i][j] = MDArray[i][j];
             }
         }
 
         MDArray = output;
+        System.out.println(Arrays.deepToString(MDArray));
 
     }
 
@@ -88,6 +95,7 @@ public class MDIntArray {
                 }
             }
         }
+        System.out.println(maxValue);
         return maxValue;
     }
 
@@ -100,6 +108,7 @@ public class MDIntArray {
                 }
             }
         }
+        System.out.println(minValue);
         return minValue;
     }
 }

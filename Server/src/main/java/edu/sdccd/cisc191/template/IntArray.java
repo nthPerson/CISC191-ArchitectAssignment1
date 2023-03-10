@@ -11,17 +11,20 @@ public class IntArray {
     }
 
     int getAtIndex(int index) {
+        System.out.println(array[index]);
         return array[index];
     }
 
     void setAtIndex(int index, int newValue) {
         array[index] = newValue;
+        System.out.println(Arrays.toString(array));
     }
 
     public int findIndex(int num) {
 
         // if array is Null
         if (array == null) {
+            System.out.println("array is null");
             return -1;
         }
 
@@ -35,11 +38,13 @@ public class IntArray {
             // if the i-th element is num
             // then return the index
             if (array[i] == num) {
+                System.out.println(i);
                 return i;
             } else {
                 i = i + 1;
             }
         }
+        System.out.println("num not found");
         return -1;
     }
 
@@ -58,6 +63,8 @@ public class IntArray {
                 k++;
             }
         }
+        array = array_new;
+        System.out.println(Arrays.toString(array));
     }
 
     public void expand() {
@@ -68,18 +75,21 @@ public class IntArray {
         // for(int i = 0; i < OrigArray.length; i++)
         //     newArray[i] = OrigArray[i];
         array = newArray;
+        System.out.println(Arrays.toString(newArray));
     }
 
     void shrink(int size) {
 
         int[] newArray = new int[size];
         System.arraycopy(array, 0, newArray, 0, size);
-        array = null;
+        array = newArray;
         System.out.println(Arrays.toString(newArray));
     }
 
     int max() {
         Arrays.sort(array);
+
+        System.out.println(array[array.length - 1]);
 
         return array[array.length - 1];
 
@@ -88,6 +98,7 @@ public class IntArray {
     int min() {
         Arrays.sort(array);
 
+        System.out.println(array[0]);
 
         return array[0];
     }
