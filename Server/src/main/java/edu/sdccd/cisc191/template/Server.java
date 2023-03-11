@@ -54,18 +54,21 @@ public class Server extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
+        // create arrays
         int[] array = new int[]{0, 1, 2, 3, 4};
         int[][] mdArray = new int[][]{{0, 1, 2, 3, 4}, {5, 6, 7, 8, 9}, {10, 11, 12, 13, 14}};
 
         IntArray intArray = new IntArray(array);
         MDIntArray mdIntArray = new MDIntArray(mdArray);
 
+        //size of window
         float width = 1500;
         float height = 800;
 
         StackPane stackPane = new StackPane();
         Scene scene = new Scene(stackPane, width, height);
 
+        //create and set position of buttons
         Button closeButton = new Button("X");
         Button ArrayPrintAll = new Button("1DArray Print All");
         Button ArrayPrintMax = new Button("1D Array Print Max");
@@ -95,6 +98,7 @@ public class Server extends Application {
         MDArrayPrintMin.setTranslateX(-300);
         MDArrayPrintMin.setTranslateY(300);
 
+        //create and set button actions
         EventHandler<ActionEvent> closeEvent = e -> stage.close();
         EventHandler<ActionEvent> ArrayPrintAllEvent = e -> intArray.printAll();
         EventHandler<ActionEvent> ArrayPrintMaxEvent = e -> intArray.max();
@@ -119,6 +123,7 @@ public class Server extends Application {
         stackPane.getChildren().add(MDArrayPrintMax);
         stackPane.getChildren().add(MDArrayPrintMin);
 
+        //set the stage
         stage.setScene(scene);
         stage.setTitle("Menu");
         stage.show();
