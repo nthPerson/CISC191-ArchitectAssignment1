@@ -62,8 +62,8 @@ public class Server extends Application {
         MDIntArray mdIntArray = new MDIntArray(mdArray);
 
         //size of window
-        float width = 1500;
-        float height = 800;
+        float width = 800;
+        float height = 650;
 
         StackPane stackPane = new StackPane();
         Scene scene = new Scene(stackPane, width, height);

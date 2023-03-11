@@ -81,6 +81,7 @@ public class MDIntArray {
                 System.out.print(MDArray[i][j] + " ");
             }
         }
+        System.out.println("");
     }
 
     /**
