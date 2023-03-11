@@ -46,18 +46,18 @@ public class ObjectOrientedTest {
     }
 
     @Test
-    void testCar() {
-        Car testCar1 = new Car("Toyota", 125300, 2500, 5, null, 4);
-        assertEquals("Toyota", testCar1.getManufacturerName());
-        assertEquals(125300, testCar1.getMilesOnVehicle());
-        assertEquals(2500, testCar1.getPrice());
-        assertEquals(5, testCar1.getNumberOfSeats());
-        assertNull(testCar1.getOptions());
-        assertEquals(4, testCar1.getNumberOfDoors());
+    void carTest() {
+        Car testCar = new Car("Toyota", 125300, 2500, 5, null, 4);
+        assertEquals("Toyota", testCar.getManufacturerName());
+        assertEquals(125300, testCar.getMilesOnVehicle());
+        assertEquals(2500, testCar.getPrice());
+        assertEquals(5, testCar.getNumberOfSeats());
+        assertNull(testCar.getOptions());
+        assertEquals(4, testCar.getNumberOfDoors());
     }
 
     @Test
-    void testPickupTruck() {
+    void pickupTruckTest() {
         PickupTruck testTruck = new PickupTruck("Tesla", 250, 125000, 5, null, 0);
         assertEquals("Tesla", testTruck.getManufacturerName());
         assertEquals(250, testTruck.getMilesOnVehicle());
@@ -68,7 +68,7 @@ public class ObjectOrientedTest {
     }
 
     @Test
-    void testSportUtilityVehicle() {
+    void sportUtilityVehicleTest() {
         SportUtilityVehicle testSportVehicle = new SportUtilityVehicle("Mazda", 55000, 65000, 6, null, 12000);
         assertEquals("Mazda", testSportVehicle.getManufacturerName());
         assertEquals(55000, testSportVehicle.getMilesOnVehicle());
@@ -80,7 +80,7 @@ public class ObjectOrientedTest {
     }
 
     @Test
-    void testGas() {
+    void gasCarTest() {
         GasCar testGasser = new GasCar("Ford", 3500, 45000, 4, null, 2);
         assertEquals("Ford", testGasser.getManufacturerName());
         assertEquals(3500, testGasser.getMilesOnVehicle());
@@ -92,7 +92,7 @@ public class ObjectOrientedTest {
     }
 
     @Test
-    void testHybrid() {
+    void hybridCarTest() {
         HybridCar testHybridCar = new HybridCar("Toyota", 387000, 12500, 4, null, 4);
         assertEquals("Toyota", testHybridCar.getManufacturerName());
         assertEquals(387000, testHybridCar.getMilesOnVehicle());
@@ -106,7 +106,7 @@ public class ObjectOrientedTest {
     }
 
     @Test
-    void testElectric() {
+    void electricCarTest() {
         ElectricCar testElectricCar = new ElectricCar("Chevy", 12000, 35000, 2, null, 2);
         assertEquals("Chevy", testElectricCar.getManufacturerName());
         assertEquals(12000, testElectricCar.getMilesOnVehicle());
@@ -116,6 +116,19 @@ public class ObjectOrientedTest {
         assertEquals(2, testElectricCar.getNumberOfDoors());
         testElectricCar.setBatteryCharge(90);
         assertEquals(90, testElectricCar.getBatteryCharge());
+    }
+
+    @Test
+    void optionTest() {
+        Option testOption = new Option("Power Windows");
+        assertEquals("Power Windows", testOption.getDetails());
+
+        Option testOption2=new Option();
+        assertNull(testOption2.getDetails());
+
+        testOption2.setDetails("Anti-lock Brakes");
+        assertEquals("Anti-lock Brakes", testOption2.getDetails());
+
     }
 
 }
