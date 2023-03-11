@@ -2,29 +2,54 @@ package edu.sdccd.cisc191.template;
 
 import java.util.Arrays;
 
+/**
+ * A class that represents a multidimensional integer array.
+ * It provides constructors to create a multidimensional integer array object with default or specified values, getter and setter methods for elements of the array, and methods for finding min/max values or specific elements of the array.
+ */
 public class MDIntArray {
 
 
     int[][] MDArray;
 
+    /**
+     * Constructs a multidimensional integer array from the given 2D array of integers.
+     * @param nums the 2D array of integers used to initialize the multidimensional array
+     */
     //set array
     MDIntArray(int[][] nums) {
 
         MDArray = nums;
     }
 
+    /**
+     * Returns the element of a multidimensional array at the given row and column and prints the result to the console.
+     * @param row the row of the desired element
+     * @param col the column of the desired element
+     * @return the element of the multidimensional array at the given row and column
+     */
     int getAtIndex(int row, int col) {
 
         System.out.println(MDArray[row][col]);
         return MDArray[row][col];
     }
 
+    /**
+     * Sets the value of the element at the given row and column to the given value and prints the updated contents of the multidimensional array to the console.
+     * @param row the row of the desired element
+     * @param col the column of the desired element
+     * @param newValue the new value of the element at the given row and column
+     */
     void setAtIndex(int row, int col, int newValue) {
 
         MDArray[row][col] = newValue;
         System.out.println(Arrays.deepToString(MDArray));
     }
 
+    /**
+     * Finds the index of the given number in the multidimensional array.
+     * @param num the number to search for
+     * @return a string representation of the index and column if the number is found, or "num not found" if the number is not located in the multidimensional array
+     */
     public String findIndex(int num) {
         // Loop through all rows
         for (int i = 0; i < MDArray.length; i++) {
@@ -43,6 +68,9 @@ public class MDIntArray {
         return "num not found";
     }
 
+    /**
+     * Prints all elements of the multidimensional array on a single line separated by spaces.
+     */
     void printAll() {
         // Loop through all rows
         for (int i = 0; i < MDArray.length; i++) {
@@ -55,6 +83,11 @@ public class MDIntArray {
         }
     }
 
+    /**
+     * Deletes the element at the given row and column by setting the value of the element to 0.
+     * @param row the row of the desired element
+     * @param col the column of the desired element
+     */
     void deleteAtIndex(int row, int col) {
         // Loop through all rows
         for (int i = 0; i < MDArray.length; i++) {
@@ -70,6 +103,10 @@ public class MDIntArray {
         System.out.println(Arrays.deepToString(MDArray));
     }
 
+    /**
+     * Increases the number of rows and columns in the existing multidimensional array by the given value.
+     * @param factor the number of additional rows and columns to be added to the existing multidimensional array
+     */
     void expandArray(int factor) {
 
         //create array of new size
@@ -87,6 +124,10 @@ public class MDIntArray {
         System.out.println(Arrays.deepToString(MDArray));
     }
 
+    /**
+     * Decreases the number of rows and columns in the existing multidimensional array by the given value.
+     * @param factor the number of rows and columns to be subtracted from the existing multidimensional array
+     */
     void shrink(int factor) {
 
         //create array of new size
@@ -105,6 +146,10 @@ public class MDIntArray {
 
     }
 
+    /**
+     * Returns the maximum value contained in the multidimensional array and prints the result to the console.
+     * @return the maximum value contained in the multidimensional array
+     */
     public int getMaxValue() {
 
         int maxValue = MDArray[0][0];
@@ -124,6 +169,10 @@ public class MDIntArray {
         return maxValue;
     }
 
+    /**
+     * Returns the minimum value contained in the multidimensional array and prints the result to the console.
+     * @return the minimum value contained in the multidimensional array
+     */
     public int getMinValue() {
 
         int minValue = MDArray[0][0];
