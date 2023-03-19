@@ -7,13 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+// Sean: Added some new imports for Gridpane
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.BorderPane;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 /**
  * This program is a server that takes connection requests on
  * the port specified by the constant LISTENING_PORT.  When a
@@ -65,11 +68,24 @@ public class Server extends Application {
         float width = 800;
         float height = 650;
 
-        StackPane stackPane = new StackPane();
-        Scene scene = new Scene(stackPane, width, height);
+        // Sean: Create new boarder pane and grid pane to better organize the UI
+        BorderPane borderPane = new BorderPane();
+        Scene scene = new Scene(borderPane, width, height);
 
-        //create and set position of buttons
+        // Sean: Create close button outside of gridpane
         Button closeButton = new Button("X");
+        closeButton.setOnAction(e -> stage.close());
+
+        StackPane stackPane = new StackPane(closeButton);
+        stackPane.setMargin(closeButton, new Insets(10, 10, 0, 0));
+        borderPane.setTop(stackPane);
+
+        // Sean: Used Grid Pane instead of Stack Pane to further organize the UI of the buttons into a clean grid
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+
         Button ArrayPrintAll = new Button("1DArray Print All");
         Button ArrayPrintMax = new Button("1D Array Print Max");
         Button ArrayPrintMin = new Button("1D Array Print Min");
@@ -77,26 +93,17 @@ public class Server extends Application {
         Button MDArrayPrintMax = new Button("2D Array Print Max");
         Button MDArrayPrintMin = new Button("2D Array Print Min");
 
-        closeButton.setTranslateX((width / 2) - 20);
-        closeButton.setTranslateY((-height / 2) + 20);
+        gridPane.add(ArrayPrintAll, 0, 0);
+        gridPane.add(ArrayPrintMax, 0, 1);
+        gridPane.add(ArrayPrintMin, 0, 2);
+        gridPane.add(MDArrayPrintAll, 1, 0);
+        gridPane.add(MDArrayPrintMax, 1, 1);
+        gridPane.add(MDArrayPrintMin, 1, 2);
 
-        ArrayPrintAll.setTranslateX(100);
-        ArrayPrintAll.setTranslateY(100);
+        borderPane.setCenter(gridPane);
 
-        ArrayPrintMax.setTranslateX(-100);
-        ArrayPrintMax.setTranslateY(-100);
-
-        ArrayPrintMin.setTranslateX(-100);
-        ArrayPrintMin.setTranslateY(100);
-
-        MDArrayPrintAll.setTranslateX(300);
-        MDArrayPrintAll.setTranslateY(300);
-
-        MDArrayPrintMax.setTranslateX(-300);
-        MDArrayPrintMax.setTranslateY(-300);
-
-        MDArrayPrintMin.setTranslateX(-300);
-        MDArrayPrintMin.setTranslateY(300);
+        stage.setScene(scene);
+        stage.show();
 
         //create and set button actions
         EventHandler<ActionEvent> closeEvent = e -> stage.close();
@@ -115,13 +122,6 @@ public class Server extends Application {
         MDArrayPrintMax.setOnAction(MDArrayPrintMaxEvent);
         MDArrayPrintMin.setOnAction(MDArrayPrintMinEvent);
 
-        stackPane.getChildren().add(closeButton);
-        stackPane.getChildren().add(ArrayPrintAll);
-        stackPane.getChildren().add(ArrayPrintMax);
-        stackPane.getChildren().add(ArrayPrintMin);
-        stackPane.getChildren().add(MDArrayPrintAll);
-        stackPane.getChildren().add(MDArrayPrintMax);
-        stackPane.getChildren().add(MDArrayPrintMin);
 
         //set the stage
         stage.setScene(scene);
