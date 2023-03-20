@@ -5,7 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -65,8 +67,9 @@ public class Server extends Application {
         float width = 800;
         float height = 650;
 
-        StackPane stackPane = new StackPane();
-        Scene scene = new Scene(stackPane, width, height);
+        //StackPane stackPane = new StackPane();
+        BorderPane borderPane = new BorderPane();
+        Scene scene = new Scene(borderPane, 400, 350);
 
         //create and set position of buttons
         Button closeButton = new Button("X");
@@ -77,26 +80,26 @@ public class Server extends Application {
         Button MDArrayPrintMax = new Button("2D Array Print Max");
         Button MDArrayPrintMin = new Button("2D Array Print Min");
 
-        closeButton.setTranslateX((width / 2) - 20);
-        closeButton.setTranslateY((-height / 2) + 20);
+//        closeButton.setTranslateX((width / 2) - 20);
+//        closeButton.setTranslateY((-height / 2) + 20);
 
-        ArrayPrintAll.setTranslateX(100);
-        ArrayPrintAll.setTranslateY(100);
-
-        ArrayPrintMax.setTranslateX(-100);
-        ArrayPrintMax.setTranslateY(-100);
-
-        ArrayPrintMin.setTranslateX(-100);
-        ArrayPrintMin.setTranslateY(100);
-
-        MDArrayPrintAll.setTranslateX(300);
-        MDArrayPrintAll.setTranslateY(300);
-
-        MDArrayPrintMax.setTranslateX(-300);
-        MDArrayPrintMax.setTranslateY(-300);
-
-        MDArrayPrintMin.setTranslateX(-300);
-        MDArrayPrintMin.setTranslateY(300);
+//        ArrayPrintAll.setTranslateX(100);
+//        ArrayPrintAll.setTranslateY(100);
+//
+//        ArrayPrintMax.setTranslateX(-100);
+//        ArrayPrintMax.setTranslateY(-100);
+//
+//        ArrayPrintMin.setTranslateX(-100);
+//        ArrayPrintMin.setTranslateY(100);
+//
+//        MDArrayPrintAll.setTranslateX(300);
+//        MDArrayPrintAll.setTranslateY(300);
+//
+//        MDArrayPrintMax.setTranslateX(-300);
+//        MDArrayPrintMax.setTranslateY(-300);
+//
+//        MDArrayPrintMin.setTranslateX(-300);
+//        MDArrayPrintMin.setTranslateY(300);
 
         //create and set button actions
         EventHandler<ActionEvent> closeEvent = e -> stage.close();
@@ -115,13 +118,21 @@ public class Server extends Application {
         MDArrayPrintMax.setOnAction(MDArrayPrintMaxEvent);
         MDArrayPrintMin.setOnAction(MDArrayPrintMinEvent);
 
-        stackPane.getChildren().add(closeButton);
-        stackPane.getChildren().add(ArrayPrintAll);
-        stackPane.getChildren().add(ArrayPrintMax);
-        stackPane.getChildren().add(ArrayPrintMin);
-        stackPane.getChildren().add(MDArrayPrintAll);
-        stackPane.getChildren().add(MDArrayPrintMax);
-        stackPane.getChildren().add(MDArrayPrintMin);
+//        stackPane.getChildren().add(closeButton);
+//        stackPane.getChildren().add(ArrayPrintAll);
+//        stackPane.getChildren().add(ArrayPrintMax);
+//        stackPane.getChildren().add(ArrayPrintMin);
+//        stackPane.getChildren().add(MDArrayPrintAll);
+//        stackPane.getChildren().add(MDArrayPrintMax);
+//        stackPane.getChildren().add(MDArrayPrintMin);
+
+        VBox leftSide = new VBox();
+        leftSide.getChildren().addAll(ArrayPrintAll,ArrayPrintMax,ArrayPrintMin);
+        VBox rightSide = new VBox();
+        rightSide.getChildren().addAll(MDArrayPrintAll,MDArrayPrintMax,MDArrayPrintMin);
+        borderPane.setLeft(leftSide);
+        borderPane.setRight(rightSide);
+        borderPane.setCenter(closeButton);
 
         //set the stage
         stage.setScene(scene);
